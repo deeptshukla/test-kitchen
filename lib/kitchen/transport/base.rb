@@ -186,6 +186,10 @@ module Kitchen
           # this method may be left unimplemented if that is applicable
         end
 
+        def rsyn_chef_repo(dirs_to_copy, root_path)
+          # this method may be left unimplemented if that is applicable
+        end
+
         private
 
         # @return [Kitchen::Logger] a logger

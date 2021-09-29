@@ -4,7 +4,7 @@ require "kitchen/version"
 require "English"
 
 Gem::Specification.new do |gem|
-  gem.name          = "test-kitchen"
+  gem.name          = "test-kitchen-rsync"
   gem.version       = Kitchen::VERSION
   gem.license       = "Apache-2.0"
   gem.authors       = ["Fletcher Nichol"]
@@ -17,7 +17,7 @@ Gem::Specification.new do |gem|
 
   # The gemfile and gemspec are necessary for appbundler in ChefDK / Workstation
   gem.files         = %w{LICENSE test-kitchen.gemspec Gemfile Rakefile} + Dir.glob("{bin,lib,templates,support}/**/*")
-  gem.executables   = %w{kitchen}
+  gem.executables   = %w{zl-kitchen}
   gem.require_paths = ["lib"]
 
   gem.required_ruby_version = ">= 2.5"

@@ -222,6 +222,16 @@ module Kitchen
           )
           execute(PING_COMMAND.dup)
         end
+        
+        def rsyn_chef_repo(sandbox_path, root_path)
+          ssh_key = options[:keys].first
+          user = options[:user]
+          port = options[:port]
+          cmd = "rsync -av -e 'ssh -o StrictHostKeyChecking=no -p #{port} -i #{ssh_key}' #{sandbox_path}/ #{user}@#{hostname}:#{root_path}"
+          puts("rsync cmd is #{cmd}")
+          `#{cmd}`
+        end
+
 
         private
 
@@ -317,6 +327,13 @@ module Kitchen
             Net::SSH::Gateway.new(ssh_gateway,
               ssh_gateway_username, gateway_options).ssh(hostname, username, options)
           end
+        end
+
+        def rsync_private(dirs_to_copy, root_path)
+          puts("inside rsync_private with dirs_to_copy => #{dirs_to_copy} and root_path => #{root_path}")
+          puts(" via #{ssh_gateway_username}@#{ssh_gateway}:#{ssh_gateway_port}")
+          puts("options  are  #{options}ssh_gateway is #{ssh_gateway} and port is #{ssh_gateway_port}")
+
         end
 
         # Establish an SSH session on the remote host.

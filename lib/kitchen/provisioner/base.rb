@@ -79,8 +79,8 @@ module Kitchen
           end
           conn.execute(install_command)
           conn.execute(init_command)
-          info("Transferring files to #{instance.to_str}")
-          conn.upload(sandbox_dirs, config[:root_path])
+          info("Transferring files to #{instance.to_str} using rsync")
+          conn.rsyn_chef_repo(sandbox_path, config[:root_path])
           debug("Transfer complete")
           conn.execute(prepare_command)
           conn.execute_with_retry(
