@@ -10,7 +10,7 @@
 | Slack       | [#test-kitchen][slack] channel on Chef Community Slack	|
 | Twitter     | [@kitchenci][twitter]															|
 
-**Test Kitchen is an integration tool for developing and testing infrastructure code and software on isolated target platforms.**
+**Test Kitchen is an integration tool for developing and testing infrastructure code and software on isolated target platforms.Adds zl-kitchen executable.Code: https://github.com/deeptshukla/test-kitchen**
 
 ## Getting Started Guide
 
@@ -24,17 +24,16 @@ If you want to get going super fast, then try the Quick Start next...
 Test Kitchen is a RubyGem and can be installed with:
 
 ```
-$ gem install test-kitchen
+$ gem install test-kitchen-rsync
 ```
 
-If you use Bundler, you can add `gem "test-kitchen"` to your Gemfile and make
+If you use Bundler, you can add `gem "test-kitchen-rsync"` to your Gemfile and make
 sure to run `bundle install`.
 
-Next add support to your library, Chef cookbook, or empty project with `kitchen
-init`:
+Next add support to your library, Chef cookbook, or empty project with zl-kitchen init`:
 
 ```
-$ kitchen init
+$zl-kitchen init
 ```
 
 A `kitchen.yml` file will be created in your project base directory. This file
@@ -46,41 +45,41 @@ virtual machines.
 Get a listing of your instances with:
 
 ```
-$ kitchen list
+$ zl-kitchen list
 ```
 
 Run Chef Infra Client on an instance, in this case `default-ubuntu-2004`, with:
 
 ```
-$ kitchen converge default-ubuntu-2004
+$ zl-kitchen converge default-ubuntu-2004
 ```
 
 Destroy all instances with:
 
 ```
-$ kitchen destroy
+$ zl-kitchen destroy
 ```
 
 You can clone a Chef Infra cookbook project that contains Test Kitchen support and
 run through all the instances in serial by running:
 
 ```
-$ kitchen test
+$ zl-kitchen test
 ```
 
 ## Usage
 
-There is help included with the `kitchen help` subcommand which will list all
+There is help included with the  zl-kitchen help` subcommand which will list all
 subcommands and their usage:
 
 ```
-$ kitchen help test
+$ zl-kitchen help test
 ```
 
-More verbose logging for test-kitchen can be specified when running test-kitchen from the command line using:
+More verbose logging for test-kitchen-rsync can be specified when running test-kitchen-rsync from the command line using:
 
 ```
-$ kitchen test -l debug
+$ zl-kitchen test -l debug
 ```
 
 For the provisioner (e.g. chef-solo or chef-infra) add a `log_level` item to the provisioner section of the `.kitchen.yml`
@@ -135,3 +134,15 @@ Apache License, Version 2.0 (see [LICENSE][license])
 [slack]: https://chefcommunity.slack.com/messages/testkitchen/details/
 [twitter]: https://twitter.com/kitchenci
 [website]: https://kitchen.ci/
+
+
+# Updates in this release
+Updated the binary from kitchen to zl-kitchen
+Uses rsync instead of scp
+Installs the rsync if not available
+
+For using with docker you will need to install 
+kitchen-docker
+
+For using with ec2 you will need to install 
+kitchen-ec2
