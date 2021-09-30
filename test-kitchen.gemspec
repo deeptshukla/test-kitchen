@@ -7,13 +7,13 @@ Gem::Specification.new do |gem|
   gem.name          = "test-kitchen-rsync"
   gem.version       = Kitchen::VERSION
   gem.license       = "Apache-2.0"
-  gem.authors       = ["Fletcher Nichol"]
+  gem.authors       = ["Deept Shukla"]
   gem.email         = ["fnichol@nichol.ca"]
   gem.description   = "Test Kitchen is an integration tool for developing " \
                       "and testing infrastructure code and software on " \
                       "isolated target platforms."
   gem.summary       = gem.description
-  gem.homepage      = "https://kitchen.ci/"
+  gem.homepage      = "https://github.com/deeptshukla/test-kitchen"
 
   # The gemfile and gemspec are necessary for appbundler in ChefDK / Workstation
   gem.files         = %w{LICENSE test-kitchen.gemspec Gemfile Rakefile} + Dir.glob("{bin,lib,templates,support}/**/*")

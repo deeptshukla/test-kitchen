@@ -227,8 +227,11 @@ module Kitchen
           ssh_key = options[:keys].first
           user = options[:user]
           port = options[:port]
+          # Installing rsync if not available
+          rsync_install_cmd = %{ssh -o StrictHostKeyChecking=no -p #{port} -i #{ssh_key} #{user}@#{hostname} "which rsync || ( ( sudo apt-get update && sudo apt-get -y install rsync ) || ( sudo yum update && sudo yum -y install rsync ) || ( sudo dnf update && sudo dnf -y install rsync ) || ( sudo pkg update && sudo pkg install rsync ) || ( sudo apk update && sudo apk add rsync ) )"}
+          `#{rsync_install_cmd}`
           cmd = "rsync -av -e 'ssh -o StrictHostKeyChecking=no -p #{port} -i #{ssh_key}' #{sandbox_path}/ #{user}@#{hostname}:#{root_path}"
-          puts("rsync cmd is #{cmd}")
+          logger.debug("rsync cmd is #{cmd}")
           `#{cmd}`
         end
 
